@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fangminx.dao.b.VendorAliasMapper">
+  <resultMap id="BaseResultMap" type="com.fangminx.domain.c.VendorAlias">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="code" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="vendor_type" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="alias" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="language" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="vendor_code" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="vendor_country_code" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, code, vendor_type, alias, language, vendor_code, vendor_country_code
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from vendor_alias
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from vendor_alias
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.fangminx.domain.c.VendorAlias">
+    insert into vendor_alias (id, code, vendor_type, 
+      alias, language, vendor_code, 
+      vendor_country_code)
+    values (#{id,jdbcType=BIGINT}, #{code,jdbcType=VARCHAR}, #{vendorType,jdbcType=VARCHAR}, 
+      #{alias,jdbcType=VARCHAR}, #{language,jdbcType=VARCHAR}, #{vendorCode,jdbcType=VARCHAR}, 
+      #{vendorCountryCode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fangminx.domain.c.VendorAlias">
+    insert into vendor_alias
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="vendorType != null">
+        vendor_type,
+      </if>
+      <if test="alias != null">
+        alias,
+      </if>
+      <if test="language != null">
+        language,
+      </if>
+      <if test="vendorCode != null">
+        vendor_code,
+      </if>
+      <if test="vendorCountryCode != null">
+        vendor_country_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="vendorType != null">
+        #{vendorType,jdbcType=VARCHAR},
+      </if>
+      <if test="alias != null">
+        #{alias,jdbcType=VARCHAR},
+      </if>
+      <if test="language != null">
+        #{language,jdbcType=VARCHAR},
+      </if>
+      <if test="vendorCode != null">
+        #{vendorCode,jdbcType=VARCHAR},
+      </if>
+      <if test="vendorCountryCode != null">
+        #{vendorCountryCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fangminx.domain.c.VendorAlias">
+    update vendor_alias
+    <set>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="vendorType != null">
+        vendor_type = #{vendorType,jdbcType=VARCHAR},
+      </if>
+      <if test="alias != null">
+        alias = #{alias,jdbcType=VARCHAR},
+      </if>
+      <if test="language != null">
+        language = #{language,jdbcType=VARCHAR},
+      </if>
+      <if test="vendorCode != null">
+        vendor_code = #{vendorCode,jdbcType=VARCHAR},
+      </if>
+      <if test="vendorCountryCode != null">
+        vendor_country_code = #{vendorCountryCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fangminx.domain.c.VendorAlias">
+    update vendor_alias
+    set code = #{code,jdbcType=VARCHAR},
+      vendor_type = #{vendorType,jdbcType=VARCHAR},
+      alias = #{alias,jdbcType=VARCHAR},
+      language = #{language,jdbcType=VARCHAR},
+      vendor_code = #{vendorCode,jdbcType=VARCHAR},
+      vendor_country_code = #{vendorCountryCode,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

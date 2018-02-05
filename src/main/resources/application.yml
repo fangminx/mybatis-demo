@@ -1,0 +1,18 @@
+spring:
+# 数据源配置
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/my_location_mybatis_plugs?useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: root
+
+# Mybatis配置 MybatisConfiguration里已配置，这里就不配置了
+mybatis:
+  type-aliases-package: com.fangminx.domain
+  mapper-locations: classpath:mapper/**/*.xml
+  config-location: classpath:mybatis-config.xml
+
+
+
+
+
